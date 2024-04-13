@@ -40,12 +40,11 @@ function hideError() {
     errorDiv.innerText = ''; // Hata mesajını temizle
 }
 
-
 function displayCurrentWeather(data, city) {
     const forecastDiv = document.getElementById('weatherCurrentForecast');
     forecastDiv.innerHTML = ''; // Temizleme
 
-    const temperature = data.main.temp;
+    const temperature = Math.round(data.main.temp);
     const description = data.weather[0].description;
     const iconCode = data.weather[0].icon;
 
@@ -72,9 +71,9 @@ function displayCurrentWeather(data, city) {
     const forecastItem = document.createElement('div');
     forecastItem.innerHTML = `
         <h2>${data.name}, ${data.sys.country}</h2>
-        <p>Today's Weather:</p>
-        <p>Temperature: ${temperature} °C</p>
-        <p>Description: ${description}</p>
+        <p class="pt-4">Today's Weather</p>
+        <p>${temperature} °C</p>
+        <p>${description}</p>
         <img src="${imageSrc}" alt="${description}"> 
         <hr>
     `;
@@ -127,7 +126,7 @@ function displayFiveDayWeatherForecast(data, descriptionImages) {
 
     forecasts.forEach(forecast => {
         const forecastTime = new Date(forecast.dt * 1000);
-        const temperature = forecast.main.temp;
+        const temperature = Math.round(forecast.main.temp);
         const description = forecast.weather[0].description;
         const iconCode = forecast.weather[0].icon;
 
@@ -137,10 +136,11 @@ function displayFiveDayWeatherForecast(data, descriptionImages) {
         const forecastItem = document.createElement('div');
         forecastItem.innerHTML = `
             <div style="margin-right: 20px;">
-                <p>Date: ${forecastTime.toLocaleDateString()}</p>
-                <p>Temperature: ${temperature} °C</p>
-                <p>Description: ${description}</p>
+                <p>${forecastTime.toLocaleDateString()}</p>
                 <img src="${imageSrc}" alt="${description}">
+                <p>${temperature} °C</p>
+                <p>${description}</p>
+                
             </div>
         `;
         forecastContainer.appendChild(forecastItem);
@@ -153,3 +153,15 @@ document.getElementById('searchForm').addEventListener('submit', function (event
     const city = document.getElementById('cityInput').value;
     getCurrentWeather(city); // Bugünkü hava durumu tahmini
 });
+
+// güncel tarih ve zaman ayarlaması 
+function updateDateTime() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+    const dateTimeString = now.toLocaleString(undefined, options);
+    document.getElementById('current-date').textContent = dateTimeString;
+  }
+  
+  updateDateTime();
+
+  setInterval(updateDateTime, 1000);

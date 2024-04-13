@@ -12,24 +12,32 @@
 
 <body>
 
-    <div class="text-center">
-        <h1>Weather Forecast</h1>
-
-        <form id="searchForm">
-            <label for="cityInput">City:</label>
-            <input type="text" id="cityInput" name="city" required>
-            <button type="submit">Search</button>
-        </form>
-    </div>
-    <div class="text-center" id="error" style="color: red;"></div>
-
-    <div class="text-center" id="weatherCurrentForecast">
-        <h2 id="currentCity"></h2>
-    </div>
-    <div class="d-flex justify-content-center" id="weatherFiveDayForecast">
-        <h2 id="forecastCity"></h2>
-    </div>
-
+    <section>
+        <div class="text-center">
+        
+            <form class="mt-5" id="searchForm">
+                <!-- <label for="cityInput">City:</label> -->
+                <input type="text" id="cityInput" name="city" required>
+                <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search text-white" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                  </svg></button>
+            </form>
+    
+            <div class="mt-4" id="date-time">
+                <p id="current-date"></p>
+              </div>
+              
+        </div>
+        <div class="text-center text-danger mt-3" id="error"></div>
+    
+        <div class="text-center" id="weatherCurrentForecast">
+            <h2 id="currentCity"></h2>
+        </div>
+        <div class="d-flex justify-content-center text-center" id="weatherFiveDayForecast">
+            <h2 id="forecastCity"></h2>
+        </div>
+    
+    </section>
 
 
 

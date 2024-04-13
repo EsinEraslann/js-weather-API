@@ -1,7 +1,21 @@
 /* .error-input {
     border: 1px solid red;
 } */
+body{
+    line-height: 5px;
+    background-color: rgb(50, 140, 200);
+    color: #fff;
+}
 
 #cityInput{
     outline: none;
+    border: 1px solid transparent;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 5px 15px;
+}
+
+button{
+    background-color: transparent;
+    border: none;
 }
